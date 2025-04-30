@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { vadidation } from '../utilits/validate';
 import { createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile  } from "firebase/auth";
 import { auth } from '../utilits/firebase';
-import { useNavigate } from 'react-router-dom';
+import { bg_img } from '../utilits/constant';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utilits/userSlice';
 
@@ -14,7 +14,7 @@ const Login = () => {
   const email=useRef(null);
   const password=useRef(null);
   const name=useRef(null)
-  const navigate=useNavigate();
+ 
   const dispatch=useDispatch()
   
 
@@ -40,7 +40,7 @@ const Login = () => {
         const {uid,email,displayName} = auth.currentUser;
                
         dispatch(addUser({uid:uid,email:email,name:displayName}));
-        navigate('/browse')
+      
       }).catch((error) => {
         setmessage(error)
       });
@@ -52,7 +52,7 @@ const Login = () => {
        const errorCode = error.code;
        const errorMessage = error.message;
        setmessage(errorCode+"-"+errorMessage);
-       navigate('/')
+       
     
   });
     }else{
@@ -60,14 +60,14 @@ const Login = () => {
      .then((userCredential) => {
    
     const user = userCredential.user;
-    navigate('/browse')
+  
    
     })
     .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
     setmessage(errorCode+"-"+errorMessage);
-    navigate('/')
+    
     });
     }
     
@@ -84,7 +84,7 @@ const Login = () => {
     <div>
      <Header/>
      <div className='absolute'>
-     <img src="https://assets.nflxext.com/ffe/siteui/vlv3/9390f6f6-cf80-4bc9-8981-8c2cc8adf98a/web/IN-en-20250421-TRIFECTA-perspective_dc5bcfdf-88a5-4972-8ffe-b28ff942f76e_large.jpg" alt="" />
+     <img src={bg_img} alt="" />
      </div>
      <form className='w-3/12 absolute bg-black p-12 my-36 mx-auto left-0 right-0 text-white rounded-md bg-black/80' onSubmit={(e)=>{e.preventDefault()}}>
      <h1 className='font-bold text-3xl pb-6'>{isSignIn? "Sign In":"Sign Up"}</h1>

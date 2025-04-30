@@ -3,6 +3,8 @@ import Header from './Header'
 import useNowPlayingMovies from '../utilits/useNowPlayingMovies'
 import MainContainer from './MainContainer';
 import SecondContainer from './SecondContainer';
+import usePopularMovies from '../utilits/usePopularMovies';
+import useUpComingMovies from '../utilits/useUpcomingMovie';
 
 
 
@@ -10,10 +12,12 @@ import SecondContainer from './SecondContainer';
 const Browse = () => {
 
 useNowPlayingMovies();
+usePopularMovies();
+useUpComingMovies()
   
   
   return (
-    <div>
+    <div className='no-scrollbar bg-black'>
       <Header/>
 
       <MainContainer/>

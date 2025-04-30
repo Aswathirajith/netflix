@@ -8,12 +8,12 @@ const MainContainer = () => {
 
     if(!movies) return null
 
-    const mainMovie=movies[0];
+    const mainMovie=movies[2];
     const {original_title,overview,id}=mainMovie;
     
 
   return (
-    <div>
+    <div className='no-scrollbar'>
       
       <VideoTitile original_title={original_title} overview={overview}/>
       <VideoBg id={id}/>
